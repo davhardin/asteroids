@@ -10,7 +10,7 @@ def main():
     print(f"Screen width: {SCREEN_WIDTH}")
     print(f"Screen height: {SCREEN_HEIGHT}")
 
-    pygame.time.Clock()
+    clock = pygame.time.Clock()
     dt = 0.0
 
     while True:
