@@ -1,11 +1,12 @@
-from turtle import update
+
+import sys
 
 import pygame
 
 from asteroid import Asteroid
 from asteroidfield import AsteroidField
 from constants import PLAYER_RADIUS, SCREEN_HEIGHT, SCREEN_WIDTH
-from logger import log_state
+from logger import log_event, log_state
 from player import Player
 
 
@@ -38,6 +39,11 @@ def main():
                 return
         screen.fill(color="black")
         updatable.update(dt)
+        for a in asteroids:
+            if a.collides_with(player) == True:
+                log_event("player_hit")
+                print("Game over!")
+                sys.exit()
         for d in drawable:
             d.draw(screen)
         pygame.display.flip()
